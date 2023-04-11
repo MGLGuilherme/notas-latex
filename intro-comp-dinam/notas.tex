@@ -1,0 +1,75 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsfonts}
+\usepackage{tikz-cd}
+
+
+\begin{document}
+
+\section*{Introdução}
+
+
+Essas notas são uma transcrição das aulas de Introdução à Dinâmica Complexa ministrada pelo programa de Mestrado e Doutorado do IMPA pela professora Luna Lomonaco.
+Não sou o autor, só fiz a transcrição. Todos os direitos e ideias sobre a organização são da professora.
+Também não participei no dia, sendo essas notas feitas em cima dos videos no Youtube presentes no canal do IMPA.
+
+Cada seção numerada equivale a um dos videos publicados no canal.
+
+Os assuntos dessas notas supõem um conhecimento mínimo de Análise Complexa e de conceitos de Topologia Geral.
+
+\section*{1. Introdução}
+
+\section*{2. Revisão de Análise Complexa I}
+
+\section*{3. Revisão de análise Complexa II}
+
+\section*{4. Teoria Local}
+
+Estamos considerando sistemas dinâmicos gerados por iterações de funções holomorfas
+Então, dada uma função $f: U \to U$ holomorfa e para cada $z \in U$ consideramos a órbita de $z$ como o conjunto $$\{ z_n \} = \{ z, f(z), f(f(z)), \dots \} = \{ f^n(z) | n \in \mathbb{N} \}$$
+A primeira pergunta que queremos responder é: o que acontece com a orbita de $z$? Em particular: Será que $z_n$ converge?
+
+Seja $a \in U$ tal que $f(a) = a$, chamamos $a$ de Ponto Fixo e, nesse caso, $a_n = \{ a \}$. Os pontos fixos são importantes em dinâmica pois, sendo $f$ contínua, os únicos pontos onde a órbita pode convergir são pontos fixos. Mostramos com: $$a = \lim_{n \to \infty} f^{n+1}(z) = \lim_{n \to \infty} f(f^n(z)) = f(\lim_{n \to \infty} f^n(z)) = f(a) $$
+
+Definimos $\lambda = f'(a)$ como o multiplicador de ponto fixo (ou multiplicador de $f$ em $a$). O valor absoluto $|\lambda|$ determina o comportamento do sistema perto de $a$.
+
+\subsection*{Conjugações holomorfas}
+
+Seja $f: U \to U$ e $g: V \to V$ duas funções holomorfas, dizemos que $f$ e $g$ são biholomorficamente/conformemente conjugadas se existe $\phi: U \to V$ biholomorfa tal que o diagrama
+
+\begin{tikzcd}
+ U \arrow[r, "f"] \arrow[d, "\phi"] & U \arrow[d, "\phi"] \\
+ V \arrow[r, "g"] & V
+\end{tikzcd}
+
+comuta.
+
+Ou seja, $\phi \circ f = g \circ \phi $.
+
+Nestes casos, não distinguimos $f$ e $g$, pois se comporta como o mesmo sistema. A estrategia se torna então tentar achar funções fáceis conjugadas à função que gera nosso sistema, principalmente perto de pontos fixos.
+
+Percebemos as seguintes propriedades:
+
+1. Se $p$ é fixo para $f$, ou seja $f(p) = p$, e $\phi$ é a conjugação entre $f$ e $g$. Então $\phi(p)$ é fixo para $g$, ou seja $g(\phi(p)) = \phi(p)$
+
+Pois $\phi \circ f = g \circ \phi $ escreve-se como $\phi(f(p)) = g(\phi(p))$ e com $\phi(f(p))  =\phi(p)$, $\phi(p) = g(\phi(p))$
+
+De $\phi \circ f = g \circ \phi$ tira-se que  $f = \phi^{-1} \circ  g \circ \phi$ e, pela regra da cadeia $$f'(p) = \phi^{-1}_{|g(\phi(p))} \circ  g'_{|\phi(p)} \circ \phi'(p) = \\ \frac{1}{\phi'(\phi^{-1}(g(\phi(p))))}  \circ  g'_{|\phi(p)} \circ \phi'(p) = \frac{1}{\phi'(p)}  \circ  g'_{|\phi(p)} \circ \phi'(p) = g'(\phi(p))$$
+
+Em particular, a conjugação $\phi$ mapeia pontos críticos em pontos críticos.
+
+2. Se $f'(p) = 0$ e $\phi$ é a conjugação entre $f$ e $g$, então $f'(\phi(p)) = 0$
+
+Pois, sendo $\phi \circ f = g \circ \phi$ e $f'(p) = \phi^{-1}_{|g(\phi(p))} \circ  g'_{|\phi(p)} \circ \phi'(p) = 0$. Como $\phi$ é biholomorfa em $U$, $\phi'(z) \neq 0$ para todo $z \in U$. Logo o único termo que pode zerar é $g'$. 
+
+Perto dos pontos fixos, podemos conjugar $f$ com funções fáceis que dependem do multiplicador. Em particular:
+\begin{itemize}
+    \item Se $\lambda \neq 0$ e $|\lambda| \neq 1$, vale o Teorema de König, que diz que: Se $f$ for holomorfa, com $f(p) = p$ e $f'(p) = \lambda$, então existe vizinhança $V(p)$ onde $f$ é conjugada conformemente com sua parte linear, o mapa $g(z) = \lambda z$
+    \item Se $\lambda = 0$, vale o Teorema de Böttcher: Seja $f$ holomorfa, $f(p) = p$ e $f'(p) = 0$. Seja $K$ a multiplicidade de $p$ como ponto crítico (ou seja, perto de $p$ podemos escrever $f(z) = f(p) + \frac{D^kf(p)(z - p)^k}{k!} + \dots$). Então existe vizinhança aberta de $p$ e $\phi$ biholomorfa conjugando $f$ em $V$ a $g(z) = z^k$.
+    \item Se $|\lambda| = 1$, temos dois casos
+    \begin{itemize}
+        \item Se $\lambda = e^{\frac{2\pi p}{}}$  
+    \end{itemize}
+\end{itemize}
+
+\end{document}
